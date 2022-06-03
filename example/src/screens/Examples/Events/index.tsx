@@ -1,64 +1,43 @@
-import React, { useEffect } from 'react';
-import { StyleSheet } from 'react-native';
-import Toast from 'react-native-toast-message';
-import { TextInput } from 'react-native-gesture-handler';
-import { KeyboardEvents } from 'react-native-keyboard-controller';
+import React, { useMemo } from "react";
+import { View, StyleSheet } from "react-native";
+import BottomSheet, { BottomSheetTextInput } from "@gorhom/bottom-sheet";
+
+const App = () => {
+  // variables
+  const snapPoints = useMemo(() => ["10%"], []);
+
+  // renders
+  return (
+    <View style={styles.container}>
+      <BottomSheet snapPoints={snapPoints}>
+        <View style={styles.contentContainer}>
+          <BottomSheetTextInput value="Awesome 🎉" style={styles.textInput} />
+        </View>
+      </BottomSheet>
+    </View>
+  );
+};
 
 const styles = StyleSheet.create({
-  input: {
-    height: 50,
-    width: '100%',
-    backgroundColor: '#3c3c3c',
+  container: {
+    flex: 1,
+    padding: 24,
+    backgroundColor: "grey",
+  },
+  textInput: {
+    alignSelf: "stretch",
+    marginHorizontal: 12,
+    marginBottom: 12,
+    padding: 12,
+    borderRadius: 12,
+    backgroundColor: "grey",
+    color: "white",
+    textAlign: "center",
+  },
+  contentContainer: {
+    flex: 1,
+    alignItems: "center",
   },
 });
 
-function EventsListener() {
-  useEffect(() => {
-    const show = KeyboardEvents.addListener('keyboardWillShow', (e) => {
-      Toast.show({
-        type: 'info',
-        text1: '⬆️ ⌨️ Keyboard will show',
-        text2: `📲 Height: ${e.height}`,
-      });
-    });
-    const shown = KeyboardEvents.addListener('keyboardDidShow', () => {
-      Toast.show({
-        type: 'success',
-        text1: '⌨️ Keyboard is shown',
-        text2: '👋',
-      });
-    });
-    const hide = KeyboardEvents.addListener('keyboardWillHide', (e) => {
-      Toast.show({
-        type: 'info',
-        text1: '⬇️ ⌨️ Keyboard will hide',
-        text2: `📲 Height: ${e.height}`,
-      });
-    });
-    const hid = KeyboardEvents.addListener('keyboardDidHide', () => {
-      Toast.show({
-        type: 'error',
-        text1: '⌨️ Keyboard is hidden',
-        text2: '🤐',
-      });
-    });
-
-    return () => {
-      show.remove();
-      shown.remove();
-      hide.remove();
-      hid.remove();
-    };
-  }, []);
-
-  return <TextInput style={styles.input} />;
-}
-
-export default function Events() {
-  return (
-    <>
-      <EventsListener />
-      <Toast />
-    </>
-  );
-}
+export default App;

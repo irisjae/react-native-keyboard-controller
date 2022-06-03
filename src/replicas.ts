@@ -130,8 +130,15 @@ export const useReanimatedKeyboardAnimationReplica = () => {
   );
 
   useEffect(() => {
-    const show = Keyboard.addListener('keyboardWillShow', (e) => {
+    const show = Keyboard.addListener('keyboardWillChangeFrame', (e) => {
+      console.log(1);
       runOnUI(handler)(-e.endCoordinates.height);
+    });
+    Keyboard.addListener('keyboardDidChangeFrame', (e) => {
+      console.log(11);
+    });
+    Keyboard.addListener('keyboardWillShow', (e) => {
+      console.log(111);
     });
     const hide = Keyboard.addListener('keyboardWillHide', () => {
       runOnUI(handler)(0);
