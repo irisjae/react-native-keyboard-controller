@@ -4,7 +4,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 
 import { ScreenNames } from '../../constants/screenNames';
 import KeyboardAnimation from '../../screens/Examples/KeyboardAnimation';
-import ReanimatedChat from '../../screens/Examples/ReanimatedChat';
+import ReanimatedChat from '../../screens/Examples/DurationAnimations';
 import Events from '../../screens/Examples/Events';
 import AwareScrollView from '../../screens/Examples/AwareScrollView';
 import StatusBar from '../../screens/Examples/StatusBar';

@@ -59,6 +59,7 @@ class TranslateDeferringInsetsAnimationCallback(
 ) : WindowInsetsAnimationCompat.Callback(dispatchMode) {
   private val TAG = TranslateDeferringInsetsAnimationCallback::class.qualifiedName
   private var persistentKeyboardHeight = 0
+  private var start: Long = 0
 
   init {
     require(persistentInsetTypes and deferredInsetTypes == 0) {
@@ -73,6 +74,7 @@ class TranslateDeferringInsetsAnimationCallback(
   ): WindowInsetsAnimationCompat.BoundsCompat {
     val keyboardHeight = getCurrentKeyboardHeight()
     val isKeyboardVisible = isKeyboardVisible()
+    this.start = System.currentTimeMillis()
 
     if (isKeyboardVisible) {
       // do not update it on hide, since back progress will be invalid
@@ -80,11 +82,13 @@ class TranslateDeferringInsetsAnimationCallback(
     }
 
     val params: WritableMap = Arguments.createMap()
+    val duration = KeyboardMetaInfoStorage.duration
     params.putInt("height", keyboardHeight)
+    params.putInt("duration", duration)
     context?.getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter::class.java)?.emit("KeyboardController::" + if (!isKeyboardVisible) "keyboardWillHide" else "keyboardWillShow", params)
 
     Log.i(TAG, "KeyboardController::" + if (!isKeyboardVisible) "keyboardWillHide" else "keyboardWillShow")
-    Log.i(TAG, "HEIGHT:: $keyboardHeight")
+    Log.i(TAG, "HEIGHT:: $keyboardHeight, DURATION:: $duration")
 
     return super.onStart(animation, bounds)
   }
@@ -96,6 +100,9 @@ class TranslateDeferringInsetsAnimationCallback(
 
     val params: WritableMap = Arguments.createMap()
     context?.getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter::class.java)?.emit("KeyboardController::" + if (!isKeyboardVisible) "keyboardDidHide" else "keyboardDidShow", params)
+
+    KeyboardMetaInfoStorage.duration = (System.currentTimeMillis() - this.start).toInt()
+    println("duration: " + KeyboardMetaInfoStorage.duration)
 
     Log.i(TAG, "KeyboardController::" + if (!isKeyboardVisible) "keyboardDidHide" else "keyboardDidShow")
   }

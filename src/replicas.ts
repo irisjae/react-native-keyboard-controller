@@ -6,6 +6,7 @@ import {
   useDerivedValue,
   useSharedValue,
   useWorkletCallback,
+  withDelay,
   withSpring,
 } from 'react-native-reanimated';
 import { useReanimatedKeyboardAnimation } from './animated';
@@ -123,7 +124,8 @@ export const useReanimatedKeyboardAnimationReplica = () => {
       const _previousKeyboardHeight = _previousResult?._keyboardHeight;
 
       if (_keyboardHeight !== _previousKeyboardHeight) {
-        height.value = withSpring(_keyboardHeight, IOS_SPRING_CONFIG);
+        height.value = 
+          withSpring(_keyboardHeight, IOS_SPRING_CONFIG);
       }
     },
     []
@@ -131,14 +133,24 @@ export const useReanimatedKeyboardAnimationReplica = () => {
 
   useEffect(() => {
     const show = Keyboard.addListener('keyboardWillShow', (e) => {
-      runOnUI(handler)(-e.endCoordinates.height);
+      console.log('keyboardWillShow');
+      // runOnUI(handler)(-e.endCoordinates.height);
+    });
+    const show2 = Keyboard.addListener('keyboardWillChangeFrame', (e) => {
+      console.log('keyboardWillChangeFrame');
+      // runOnUI(handler)(-e.endCoordinates.height);
+      height.value = 
+          withSpring(-e.endCoordinates.height, IOS_SPRING_CONFIG);
     });
     const hide = Keyboard.addListener('keyboardWillHide', () => {
-      runOnUI(handler)(0);
+      // runOnUI(handler)(0);
+      height.value = 
+          withSpring(0, IOS_SPRING_CONFIG);
     });
 
     return () => {
       show.remove();
+      show2.remove();
       hide.remove();
     };
   }, []);

@@ -64,6 +64,9 @@ class KeyboardControllerView: UIView {
   @objc func keyboardWillAppear(_ notification: Notification) {
     if let keyboardFrame: NSValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
       let keyboardHeight = keyboardFrame.cgRectValue.size.height
+      let keyboardDuration =
+        ((notification.userInfo?[UIResponder.keyboardAnimationDurationUserInfoKey] as?
+            NSNumber)?.doubleValue ?? 0) * 1000
 
       eventDispatcher.send(
         KeyboardMoveEvent(
@@ -75,32 +78,48 @@ class KeyboardControllerView: UIView {
 
       var data = [AnyHashable: Any]()
       data["height"] = keyboardHeight
+      data["duration"] = keyboardDuration
       KeyboardController.shared?.sendEvent(withName: "KeyboardController::keyboardWillShow", body: data)
     }
   }
 
-  @objc func keyboardWillDisappear() {
+  @objc func keyboardWillDisappear(_ notification: Notification) {
     eventDispatcher.send(KeyboardMoveEvent(viewTag: reactTag, height: 0, progress: 0))
+
+    let keyboardDuration =
+      ((notification.userInfo?[UIResponder.keyboardAnimationDurationUserInfoKey] as?
+          NSNumber)?.doubleValue ?? 0) * 1000
 
     var data = [AnyHashable: Any]()
     data["height"] = 0
+    data["duration"] = keyboardDuration
     KeyboardController.shared?.sendEvent(withName: "KeyboardController::keyboardWillHide", body: data)
   }
 
   @objc func keyboardDidAppear(_ notification: Notification) {
     if let keyboardFrame: NSValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
       let keyboardHeight = keyboardFrame.cgRectValue.size.height
+      let keyboardDuration =
+        ((notification.userInfo?[UIResponder.keyboardAnimationDurationUserInfoKey] as?
+            NSNumber)?.doubleValue ?? 0) * 1000
 
       var data = [AnyHashable: Any]()
       data["height"] = keyboardHeight
+      data["duration"] = keyboardDuration
 
       KeyboardController.shared?.sendEvent(withName: "KeyboardController::keyboardDidShow", body: data)
     }
   }
 
-  @objc func keyboardDidDisappear() {
+  @objc func keyboardDidDisappear(_ notification: Notification) {
     var data = [AnyHashable: Any]()
+
+    let keyboardDuration =
+      ((notification.userInfo?[UIResponder.keyboardAnimationDurationUserInfoKey] as?
+          NSNumber)?.doubleValue ?? 0) * 1000
+
     data["height"] = 0
+    data["duration"] = keyboardDuration
     KeyboardController.shared?.sendEvent(withName: "KeyboardController::keyboardDidHide", body: data)
   }
 }
