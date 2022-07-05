@@ -19,4 +19,9 @@ export const examples: Example[] = [
     info: ScreenNames.STATUS_BAR,
     icons: '🔋',
   },
+  {
+    title: 'Native Stack',
+    info: ScreenNames.NATIVE_STACK,
+    icons: '🔋',
+  },
 ];
