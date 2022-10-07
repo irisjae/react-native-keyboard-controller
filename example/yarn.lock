@@ -1056,23 +1056,18 @@
   resolved "https://registry.yarnpkg.com/@react-navigation/elements/-/elements-1.3.6.tgz#fa700318528db93f05144b1be4b691b9c1dd1abe"
   integrity sha512-pNJ8R9JMga6SXOw6wGVN0tjmE6vegwPmJBL45SEMX2fqTfAk2ykDnlJHodRpHpAgsv0DaI8qX76z3A+aqKSU0w==
 
+"@react-navigation/native-stack@^6.7.0":
+  version "6.9.0"
+  resolved "https://registry.yarnpkg.com/@react-navigation/native-stack/-/native-stack-6.9.0.tgz#1e79e06da8b81f0368d3709aedca269947da3649"
+  integrity sha512-cwqm/2GO0hf94OFRuH6R0beZPVKY4vMFxrdAPaDwwoukN5a0UgcsMYxrN8s2huwssTCuGScABFME9GnqG5hC5w==
+  dependencies:
+    "@react-navigation/elements" "^1.3.6"
+    warn-once "^0.1.0"
+
 "@react-navigation/native@^6.0.13":
   version "6.0.13"
   resolved "https://registry.yarnpkg.com/@react-navigation/native/-/native-6.0.13.tgz#ec504120e193ea6a7f24ffa765a1338be5a3160a"
   integrity sha512-CwaJcAGbhv3p3ECablxBkw8QBCGDWXqVRwQ4QbelajNW623m3sNTC9dOF6kjp8au6Rg9B5e0KmeuY0xWbPk79A==
-
-"@react-navigation/native-stack@^6.7.0":
-  version "6.7.0"
-  resolved "https://registry.yarnpkg.com/@react-navigation/native-stack/-/native-stack-6.7.0.tgz#57e6390e3e4e46b3a7f580810c3d384b4676b7e5"
-  integrity sha512-03CuSwbBvP9+iXgjrTRRw+aog+KZXbhPzqCWVExzIWNOzf5/PJEcdtlm9KDrx2aHHDtDA6LRLKQA4UIlJOmNzA==
-  dependencies:
-    "@react-navigation/elements" "^1.3.4"
-    warn-once "^0.1.0"
-
-"@react-navigation/native@^6.0.11":
-  version "6.0.11"
-  resolved "https://registry.yarnpkg.com/@react-navigation/native/-/native-6.0.11.tgz#d221a5f6a5222187a09fc968d07d67d83ce70708"
-  integrity sha512-z0YTB7Czdb9SNjxfzcFNB3Vym0qmUcxpiYGOOXX8PH0s+xlIs/w+2RVp6YAvAC48A30o7MMCYqy5OeR6lrtWHg==
   dependencies:
     "@react-navigation/core" "^6.4.0"
     escape-string-regexp "^4.0.0"
@@ -1147,9 +1142,9 @@
     "@types/istanbul-lib-report" "*"
 
 "@types/node@*":
-  version "18.8.2"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-18.8.2.tgz#17d42c6322d917764dd3d2d3a10d7884925de067"
-  integrity sha512-cRMwIgdDN43GO4xMWAfJAecYn8wV4JbsOGHNfNUIDiuYkUYAR5ec4Rj7IO2SAhFPEfpPtLtUTbbny/TCT7aDwA==
+  version "18.8.3"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-18.8.3.tgz#ce750ab4017effa51aed6a7230651778d54e327c"
+  integrity sha512-0os9vz6BpGwxGe9LOhgP/ncvYN5Tx1fNcd2TM3rD/aCGBkysb+ZWpXEocG24h6ZzOi13+VB8HndAQFezsSOw1w==
 
 "@types/prop-types@*":
   version "15.7.5"
@@ -1574,9 +1569,9 @@ camelcase@^6.0.0:
   integrity sha512-Gmy6FhYlCY7uOElZUSbxo2UCDH8owEk996gkbrpsgGtrJLM3J7jGxl9Ic7Qwwj4ivOE5AWZWRMecDdF7hqGjFA==
 
 caniuse-lite@^1.0.30001400:
-  version "1.0.30001416"
-  resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30001416.tgz#29692af8a6a11412f2d3cf9a59d588fcdd21ce4c"
-  integrity sha512-06wzzdAkCPZO+Qm4e/eNghZBDfVNDsCgw33T27OwBH9unE9S478OYw//Q2L7Npf/zBzs7rjZOszIFQkwQKAEqA==
+  version "1.0.30001418"
+  resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30001418.tgz#5f459215192a024c99e3e3a53aac310fc7cf24e6"
+  integrity sha512-oIs7+JL3K9JRQ3jPZjlH6qyYDp+nBTCais7hjh0s+fuBwufc7uZ7hPYMXrDOJhV360KGMTcczMRObk0/iMqZRg==
 
 chalk@^2.0.0:
   version "2.4.2"
@@ -1910,9 +1905,9 @@ ee-first@1.1.1:
   integrity sha512-WMwm9LhRUo+WUaRN+vRuETqG89IgZphVSNkdFgeb6sS/E4OrDIN7t48CAewSHXc6C8lefD8KKfr5vY61brQlow==
 
 electron-to-chromium@^1.4.251:
-  version "1.4.272"
-  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.4.272.tgz#cedebaeec5d9879da85b127e65a55c6b4c58344e"
-  integrity sha512-KS6gPPGNrzpVv9HzFVq+Etd0AjZEPr5pvaTBn2yD6KV4+cKW4I0CJoJNgmTG6gUQPAMZ4wIPtcOuoou3qFAZCA==
+  version "1.4.275"
+  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.4.275.tgz#db25c8e39c9cc910a996d1ec9b73eee834cb0ac1"
+  integrity sha512-aJeQQ+Hl9Jyyzv4chBqYJwmVRY46N5i2BEX5Cuyk/5gFCUZ5F3i7Hnba6snZftWla7Gglwc5pIgcd+E7cW+rPg==
 
 emoji-regex@^8.0.0:
   version "8.0.0"
@@ -2136,9 +2131,9 @@ find-up@^5.0.0:
     path-exists "^4.0.0"
 
 flow-parser@0.*:
-  version "0.188.1"
-  resolved "https://registry.yarnpkg.com/flow-parser/-/flow-parser-0.188.1.tgz#eb2174271d817d012708c39eb018c166a52d7ca6"
-  integrity sha512-6PA9S1Dphgj5j61As1VkCw8xE0sBXd/ql/WYRQRT8kgORqclp5Eh/blAKvye2p/oIrCpWYwENs1khKqTZvd2UA==
+  version "0.188.2"
+  resolved "https://registry.yarnpkg.com/flow-parser/-/flow-parser-0.188.2.tgz#cba2f8c8cdcf358d553cf89f0b9aaaa394fa6111"
+  integrity sha512-Qnvihm7h4YDgFVQV2h0TcLE421D20/giBg93Dtobj+CHRnZ39vmsbDPM9IenUBtZuY0vWRiJp6slOv7dvmlKbg==
 
 flow-parser@^0.121.0:
   version "0.121.0"
@@ -3686,7 +3681,7 @@ react-native-safe-modules@^1.0.3:
 
 "react-native-screens@https://github.com/kirillzyusko/react-native-screens.git#refactor/removed-deprecated-replace-system-window-insets":
   version "3.16.0"
-  resolved "https://github.com/kirillzyusko/react-native-screens.git#e5018461e58095f10a99beb790e6ba39101f1944"
+  resolved "https://github.com/kirillzyusko/react-native-screens.git#e81a2d188492c39f7041a61e90a3ba3fe729ed7a"
   dependencies:
     react-freeze "^1.0.0"
     warn-once "^0.1.0"
