@@ -10,6 +10,7 @@ import AwareScrollView from '../../screens/Examples/AwareScrollView';
 import StatusBar from '../../screens/Examples/StatusBar';
 import LottieAnimation from '../../screens/Examples/Lottie';
 import NonUIProps from '../../screens/Examples/NonUIProps';
+import AnimatedRef from '../../screens/Examples/AnimatedRef';
 
 export type ExamplesStackParamList = {
   [ScreenNames.ANIMATED_EXAMPLE]: undefined;
@@ -19,6 +20,7 @@ export type ExamplesStackParamList = {
   [ScreenNames.STATUS_BAR]: undefined;
   [ScreenNames.LOTTIE]: undefined;
   [ScreenNames.NON_UI_PROPS]: undefined;
+  [ScreenNames.ANIMATED_REF]: undefined;
 };
 
 const Stack = createStackNavigator<ExamplesStackParamList>();
@@ -45,6 +47,9 @@ const options = {
   },
   [ScreenNames.NON_UI_PROPS]: {
     title: 'Non UI Props',
+  },
+  [ScreenNames.ANIMATED_REF]: {
+    title: 'Animated Ref',
   },
 };
 
@@ -84,6 +89,11 @@ const ExamplesStack = () => (
       name={ScreenNames.NON_UI_PROPS}
       component={NonUIProps}
       options={options[ScreenNames.NON_UI_PROPS]}
+    />
+    <Stack.Screen
+      name={ScreenNames.ANIMATED_REF}
+      component={AnimatedRef}
+      options={options[ScreenNames.ANIMATED_REF]}
     />
   </Stack.Navigator>
 );

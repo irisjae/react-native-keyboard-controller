@@ -29,4 +29,9 @@ export const examples: Example[] = [
     info: ScreenNames.NON_UI_PROPS,
     icons: '🚀',
   },
+  {
+    title: 'Animated ref',
+    info: ScreenNames.ANIMATED_REF,
+    icons: '🔮',
+  },
 ];
